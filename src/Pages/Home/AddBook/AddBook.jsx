@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-
+import Swal from 'sweetalert2'
 export default function AddBook() {
   // Getting form Data
   const handleSubmit = (e) => {
@@ -27,7 +27,8 @@ export default function AddBook() {
       quantity,
       category,
     };
-
+   
+    /*
     fetch("http://localhost:5000/createbook", {
       method: "POST",
       headers: {
@@ -35,8 +36,27 @@ export default function AddBook() {
       },
       body: JSON.stringify(book),
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    .then((res) => res.json())
+    .then((data) => Swal.fire({
+      title: 'succes!',
+      text: 'book added successfully',
+      icon: 'success',
+      confirmButtonText: 'ok'
+    }));
+    */
+
+  // backend api
+  const url = "http://localhost:5000/createbook";
+  
+ // send book info in backend
+ axios.post(url,book)
+ .then(data=>Swal.fire({
+  title: 'succes!',
+  text: 'book added successfully',
+  icon: 'success',
+  confirmButtonText: 'ok'
+}))
+
 
       // reset the form after adding book
       form.reset()
