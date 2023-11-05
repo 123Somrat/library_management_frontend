@@ -1,6 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
 import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
+import AddBook from "../Pages/Home/AddBook/AddBook";
 
 
 
@@ -16,7 +17,10 @@ import Home from "../Pages/Home/Home";
             element:<Home/>,
             
         },
-   
+        {
+        path:"/addBook",
+        element:<AddBook/>
+        }
       ]
     },
   ]);
