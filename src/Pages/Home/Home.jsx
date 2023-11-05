@@ -1,11 +1,10 @@
 import React from 'react'
-import Books from '../../Component/Books/Books'
-import BookARoom from '../../Component/BookARoom/BookARoom'
+import Banner from '../../Component/Banner/Banner'
 
 export default function Home() {
   return (
-    <div className='text-red-100'>
-      
+    <div>
+       <Banner/>
       </div>
   )
 }

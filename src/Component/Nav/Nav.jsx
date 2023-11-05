@@ -7,7 +7,6 @@ export default function Nav() {
     //<IoBookSharp className="w-8 h-8 text-amber-600"/>
   return (
     <div>
-       <h1>sam</h1>
        <nav class=" dark:bg-gray-900  w-full mx-auto z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
         <div class="max-w-screen-xl flex  flex-wrap items-center justify-between mx-auto p-4">
           <a href="https://flowbite.com/" class="flex items-center">
