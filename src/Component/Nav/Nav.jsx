@@ -9,12 +9,12 @@ export default function Nav() {
     <div>
        <nav className=" dark:bg-gray-900  w-full mx-auto z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
         <div className="max-w-screen-xl flex  flex-wrap items-center justify-between mx-auto p-4">
-          <a href="https://flowbite.com/" className="flex items-center">
-          <img src={logo} className="h-8 mr-3" alt="Flowbite Logo" />
+          <Link to={"/"} className="flex items-center">
+          <img src={logo} className="h-8 mr-3" alt="library Logo" />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-transparent  bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700">
               Public Library
             </span>
-          </a>
+          </Link>
           <div className="flex md:order-2">
            <Link to={"/login"}> <button
               type="button"
