@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import AddBook from "../Pages/Home/AddBook/AddBook";
 import ShowBookDetails from "../Pages/ShowBookDetails/ShowBookDetails"
 import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
 
 
 
@@ -26,7 +27,12 @@ import Login from "../Pages/Login/Login";
          path:"/bookdetails/:id",
          element:<ShowBookDetails/>,
          loader : ({params})=>fetch(`http://localhost:5000/bookdetails/${params.id}`)
-        },{
+        },
+        {
+         path:"auth/register",
+         element:<Register/>
+        },
+        {
           path:"/auth/login",
           element :<Login/>
         }
