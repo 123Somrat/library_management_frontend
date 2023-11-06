@@ -2,7 +2,9 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 
 export default function ShowBookDetails() {
+  // get bbok data 
   const book = useLoaderData();
+  // destructure the book object
   const {
     _id,
     bookName,
@@ -13,7 +15,7 @@ export default function ShowBookDetails() {
     quantity,
     category,
   } = book;
-  console.log(typeof quantity)
+  //console.log(typeof quantity)
   return (
     <div className="my-12 mx-8 flex flex-col md:flex-row h-[550px]">
       <img
