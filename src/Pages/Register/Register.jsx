@@ -1,17 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import booklogo from "../../assets/book-4986.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/Providers";
 import Swal from 'sweetalert2'
-import axios from "axios";
 export default function Register() {
     // import
 const {CreateUser} = useContext(AuthContext)
 const navigate = useNavigate()
-
+const [fNameError,setFnameError]=useState("")
+const [lNameError,setlnameError]=useState("")
+const [emailError,setEmailError] = useState("")
+const [passwordError,setPasswordError] = useState("")
   const handleSubmit = (e)=>{
     e.preventDefault();
-
+    
     // select the form
       const form = e.target;
    
@@ -21,7 +23,39 @@ const navigate = useNavigate()
       const lname = form.lname.value;
       const email = form.email.value;
       const password = form.password.value;
-      
+      // email regex
+      const emailRegex = /.+\@.+\..+/
+
+      // validate firstname field
+     if(fname==="" || fname.length<6){
+       setFnameError("firstName must be 6 cherecter long")
+       return
+     }else{
+         setFnameError("")
+     }
+
+      // validate lastName field
+     if(lname==="" || lname.length<6){
+      setlnameError("lastName must be 6 cherecter long")
+      return
+    }else{
+      setlnameError("")
+    }
+    //validate email
+    if(email==="" || !email.match(emailRegex)){
+       setEmailError("email must be follow valid email pattern")
+       return
+    }else{
+       setEmailError("")
+    }
+    // validate password
+     if(password ==="" || password.length<7){
+       setPasswordError("Password mustbe 8 cherecter long")
+       return
+     }else{
+         setPasswordError("")
+     }
+
       CreateUser(email,password)
       .then(user=>{Swal.fire({
         title: 'success',
@@ -85,8 +119,9 @@ const navigate = useNavigate()
               name="fname"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
-              required
+              
             />
+            {fNameError && <p className="text-red-500 m-1">{fNameError}</p>}
           </div>
           <div className="mt-4">
             <label
@@ -101,8 +136,9 @@ const navigate = useNavigate()
               name="lname"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
-              required
+             
             />
+            {lNameError && <p className="text-red-500 m-1">{lNameError}</p>}
           </div>
           <div className="mb-2">
             <label
@@ -117,8 +153,9 @@ const navigate = useNavigate()
               name="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-amber-500 dark:focus:border-amber-500"
               placeholder="john.doe@company.com"
-              required
+             
             />
+            {emailError && <p className="text-red-500 m-1">{emailError}</p>}
           </div>
           <div className="mb-2">
             <label
@@ -133,8 +170,9 @@ const navigate = useNavigate()
               name="password"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-amber-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:amber-blue-500 dark:focus:border-amber-500"
               placeholder="•••••••••"
-              required
+              
             />
+            {passwordError && <p className="text-red-500 m-1">{passwordError}</p>}
           </div>
         </div>
 

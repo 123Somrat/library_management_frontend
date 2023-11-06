@@ -7,7 +7,8 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
 import NotFound from "../Pages/NotFound/NotFound";
-
+import ReadingBook from "../Pages/ReadingBook/ReadingBook";
+import ReactPDF from '@react-pdf/renderer'
 
 
 
@@ -29,6 +30,10 @@ import NotFound from "../Pages/NotFound/NotFound";
          path:"/bookdetails/:id",
          element:<PrivateRoute><ShowBookDetails/></PrivateRoute>,
          loader : ({params})=>fetch(`http://localhost:5000/bookdetails/${params.id}`)
+        },
+        {
+           path:"/readbook",
+           element :<ReadingBook/>
         },
         {
          path:"auth/register",

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
 import booklogo from "../../assets/book-4986.svg"
 export default function ShowBookDetails() {
@@ -93,7 +93,7 @@ const openModel = () =>{
         </span>
         <div className="my-8">
         {Number(quantity)<=0 ?<button type="button" className=" text-white bg-amber-500 hover:bg-amber-700  focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 disabled">Borrow</button> :<button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" className="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900" onClick={openModel}>Borrow</button>}
-        <button type="button" className="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Read</button>
+         <Link to={"/readbook"}><button type="button" className="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Read</button></Link>
         </div>
       </div>
     </div>
