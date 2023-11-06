@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link,useNavigate} from 'react-router-dom'
+import { Link,useLocation,useNavigate} from 'react-router-dom'
 import booklogo from "../../assets/book-4986.svg"
 import Swal from 'sweetalert2'
 import { useContext } from 'react'
@@ -7,6 +7,8 @@ import { AuthContext } from '../../Providers/Providers'
 export default function Login() {
    const { LoginUser} = useContext(AuthContext)
    const navigate = useNavigate()
+   const location = useLocation();
+   console.log("i am from login page",location)
    const handleSubmit = (e) =>{
     // prevent defult  form relode behaviour
         e.preventDefault();
@@ -25,7 +27,7 @@ export default function Login() {
         icon: 'success',
         confirmButtonText: 'ok'
       })
-     return navigate("/")
+     return location ? navigate(location.state) : navigate("/")
     })
       .catch(err=>{Swal.fire({
         title: 'error',

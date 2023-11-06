@@ -5,6 +5,7 @@ import AddBook from "../Pages/Home/AddBook/AddBook";
 import ShowBookDetails from "../Pages/ShowBookDetails/ShowBookDetails"
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
 
 
 
@@ -21,7 +22,7 @@ import Register from "../Pages/Register/Register";
         },
         {
         path:"/addBook",
-        element:<AddBook/>
+        element:<PrivateRoute><AddBook/></PrivateRoute>
         },
         {
          path:"/bookdetails/:id",
