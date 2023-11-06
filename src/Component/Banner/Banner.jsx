@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Banner() {
   return (
-    <div className="border-2 border-red-500">
+    <div >
       <div className="relative w-full" data-carousel="static">
         <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
           <div className="duration-700 ease-in-out">

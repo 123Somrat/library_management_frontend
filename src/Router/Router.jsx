@@ -6,6 +6,7 @@ import ShowBookDetails from "../Pages/ShowBookDetails/ShowBookDetails"
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
+import NotFound from "../Pages/NotFound/NotFound";
 
 
 
@@ -36,6 +37,10 @@ import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
         {
           path:"/auth/login",
           element :<Login/>
+        },
+        {
+          path:"/*",
+          element:<NotFound/>
         }
       ]
     },

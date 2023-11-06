@@ -8,7 +8,7 @@ export default function Login() {
    const { LoginUser} = useContext(AuthContext)
    const navigate = useNavigate()
    const location = useLocation();
-   console.log("i am from login page",location)
+   console.log("i am from lgoin",location)
    const handleSubmit = (e) =>{
     // prevent defult  form relode behaviour
         e.preventDefault();
@@ -27,7 +27,7 @@ export default function Login() {
         icon: 'success',
         confirmButtonText: 'ok'
       })
-     return location ? navigate(location.state) : navigate("/")
+     return location.state=== null? navigate("/") : navigate(location.state)  
     })
       .catch(err=>{Swal.fire({
         title: 'error',

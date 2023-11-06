@@ -50,7 +50,8 @@ const userSignOut = () =>{
                 icon: 'success',
                 confirmButtonText: 'ok'
               })
-               setUser(null)
+               setUser(null),
+                <Navigate to="/" />
             })
       .catch((error) => {
         Swal.fire({

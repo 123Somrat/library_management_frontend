@@ -10,7 +10,7 @@ export default function BookesCategory() {
          const query  = e?.target?.name;
         
        // get all books
-       fetch("http://localhost:5000/books")
+       fetch(`http://localhost:5000/books/${query}`)
        .then(res=>res.json())
        .then(data=>setBooks(data))
 
@@ -22,7 +22,7 @@ export default function BookesCategory() {
       <div className="border-b border-gray-200 dark:border-gray-700">
         <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
           <li className="mr-2">
-            <Link className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" onClick={getAllBooks} name="books">
+            <Link className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" onClick={getAllBooks} name="allbooks">
               All Bookes
             </Link>
           </li>
