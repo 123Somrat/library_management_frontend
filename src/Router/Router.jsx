@@ -27,7 +27,7 @@ import NotFound from "../Pages/NotFound/NotFound";
         },
         {
          path:"/bookdetails/:id",
-         element:<ShowBookDetails/>,
+         element:<PrivateRoute><ShowBookDetails/></PrivateRoute>,
          loader : ({params})=>fetch(`http://localhost:5000/bookdetails/${params.id}`)
         },
         {
