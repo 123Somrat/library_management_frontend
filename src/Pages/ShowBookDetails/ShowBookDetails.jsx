@@ -15,7 +15,7 @@ export default function ShowBookDetails() {
   } = book;
   console.log(typeof quantity)
   return (
-    <div className="my-12 mx-8 flex flex-col md:flex-row">
+    <div className="my-12 mx-8 flex flex-col md:flex-row h-[550px]">
       <img
         className="object-cover w-full rounded-t-lg h-[250px] md:h-auto  md:rounded-none md:rounded-l-lg"
         src={imageUrl}
@@ -35,8 +35,8 @@ export default function ShowBookDetails() {
           ratings : {rating}
         </span>
         <div className="my-8">
-        {quantity<=0 ?<button type="button" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 disabled">Borrow</button> : <button type="button" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Borrow</button>}
-        <button type="button" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Read</button>
+        {Number(quantity)<=0 ?<button type="button" className=" text-white bg-amber-500 hover:bg-amber-700  focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 disabled">Borrow</button> : <button type="button" class="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Borrow</button>}
+        <button type="button" className="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Read</button>
         </div>
       </div>
     </div>
