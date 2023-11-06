@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import booklogo from "../../assets/book-4986.svg";
-
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/Providers";
+import Swal from 'sweetalert2'
+import axios from "axios";
 export default function Register() {
+    // import
+const {CreateUser} = useContext(AuthContext)
+const navigate = useNavigate()
 
   const handleSubmit = (e)=>{
     e.preventDefault();
@@ -14,11 +20,46 @@ export default function Register() {
       const fname = form.fname.value;
       const lname = form.lname.value;
       const email = form.email.value;
-      const password = form.password.value
+      const password = form.password.value;
       
-      console.log(fname,lname,email,password)
+      CreateUser(email,password)
+      .then(user=>{Swal.fire({
+        title: 'success',
+        text: "User Created Successfully",
+        icon: 'success',
+        confirmButtonText: 'ok'
+      })
+       const {email}=user.user;
+       const {creationTime} = user.user.metadata;
+       const {lastSignInTime} = user.user.metadata;
+        const userInfo = {
+             fname,
+             lname,
+             email,
+             creationTime,
+             lastSignInTime
+        }
+       fetch("http://localhost:5000/users",{
+          method : "post",
+          headers:{
+             "content-type" : "application/json"
+          },
+          body:JSON.stringify(userInfo)
+       })
+       .then(res=>res.json())
+       .then(data=>console.log(data))
+       
 
+       return navigate("/auth/login") 
+    })
+      .catch(err=>Swal.fire({
+        title: 'error!',
+        text: "some thing wrong",
+        icon: 'error',
+        confirmButtonText: 'ok'
+      }))
 
+    form.reset()
   }
 
 
