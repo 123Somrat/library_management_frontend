@@ -22,7 +22,7 @@ export default function Book({book}) {
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold  px-2 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ">ratings : {rating}</span>
         
         <div className="flex flex-row-reverse">
-            <Link to={`/details/${_id}`} className="text-white bg-amber-600  hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Details</Link>
+            <Link to={`/bookdetails/${_id}`} className="text-white bg-amber-600  hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Details</Link>
         </div>
     </div>
 </div>
