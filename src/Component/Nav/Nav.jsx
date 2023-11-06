@@ -1,10 +1,20 @@
 import { IoBookSharp } from "react-icons/io5";
 import logo from "../../assets/book-4986.svg"
 import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/Providers";
 
 
 export default function Nav() {
     //<IoBookSharp classNameName="w-8 h-8 text-amber-600"/>
+    const {User,userSignOut} = useContext(AuthContext);
+
+    // user signOut function
+   const signOut = () =>{
+       userSignOut()
+   }
+
+
   return (
     <div>
        <nav className=" dark:bg-gray-900  w-full mx-auto z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -16,12 +26,19 @@ export default function Nav() {
             </span>
           </Link>
           <div className="flex md:order-2">
-           <Link to={"auth/login"}> <button
+           {User ? <button
+              type="button"
+              onClick={signOut}
+              className="text-white bg-amber-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              SignOut
+            </button>: <Link to={"auth/login"}> <button
               type="button"
               className="text-white bg-amber-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Login
             </button></Link>
+}
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
