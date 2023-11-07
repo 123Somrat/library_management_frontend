@@ -32,8 +32,9 @@ import ReactPDF from '@react-pdf/renderer'
          loader : ({params})=>fetch(`http://localhost:5000/bookdetails/${params.id}`)
         },
         {
-           path:"/readbook",
-           element :<ReadingBook/>
+           path:"/readbook/:id",
+           element :<ReadingBook/>,
+           loader : ({params})=>fetch(`http://localhost:5000/readbook/${params.id}`)
         },
         {
          path:"auth/register",

@@ -8,7 +8,6 @@ export default function Login() {
    const { LoginUser} = useContext(AuthContext)
    const navigate = useNavigate()
    const location = useLocation();
-   console.log("i am from lgoin",location)
    const handleSubmit = (e) =>{
     // prevent defult  form relode behaviour
         e.preventDefault();
