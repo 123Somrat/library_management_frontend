@@ -9,6 +9,11 @@ import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
 import NotFound from "../Pages/NotFound/NotFound";
 import ReadingBook from "../Pages/ReadingBook/ReadingBook";
 import ReactPDF from '@react-pdf/renderer'
+import BorrowedBooks from "../Pages/BorrowedBooks/BorrowedBooks";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/Providers";
+ 
+
 
 
 
@@ -35,6 +40,11 @@ import ReactPDF from '@react-pdf/renderer'
            path:"/readbook/:id",
            element :<ReadingBook/>,
            loader : ({params})=>fetch(`http://localhost:5000/readbook/${params.id}`)
+        },
+        {
+          path:"/borrowedBook",
+          element :<PrivateRoute><BorrowedBooks/></PrivateRoute>,
+          //loader : () => 
         },
         {
          path:"auth/register",
