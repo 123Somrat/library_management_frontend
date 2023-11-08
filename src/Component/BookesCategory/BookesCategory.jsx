@@ -2,11 +2,13 @@
 import {useEffect, useState} from "react"
 import { Link, NavLink } from "react-router-dom";
 import Books from "../Books/Books";
-
+import { Button, TextInput } from 'flowbite-react';
 export default function BookesCategory() {
  const [books,setBooks]= useState([])
-
+ const [searchedBook,setSearchedBook] = useState([])
+ const [searchButtonClicked,setSearchButtonClicked]=useState(false)
   const getAllBooks = (e) =>{
+    setSearchButtonClicked(false)
          const query  = e?.target?.name;
         console.log("getall books call from useEffect")
        // get all books
@@ -17,16 +19,32 @@ export default function BookesCategory() {
     
   }
   // load all boks data when website load on first time
+
   useEffect(()=>{
     fetch(`http://localhost:5000/books/allbooks`)
     .then(res=>res.json())
     .then(data=>setBooks(data))
   },[])
+ // findBook based on serach if here only this booked are showing which books quantity more then 0 or available
+
+const findBook = (e) =>{
+  e.preventDefault()
+
+  setSearchButtonClicked(true)
+  
+
+  // fetching available books 
+  fetch(`http://localhost:5000/availablebooks`)
+  .then(res=>res.json())
+  .then(data=>setSearchedBook(data))
+}
+
+
 
   return (
     <div>
-      <div className="border-b border-gray-200 dark:border-gray-700">
-        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+      <div className="border-b  border-gray-200 dark:border-gray-700">
+        <ul className="flex flex-wrap justify-center -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
           <li className="mr-2">
             <Link className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" onClick={getAllBooks} name="allbooks">
               All Bookes
@@ -87,9 +105,13 @@ export default function BookesCategory() {
               Time Management
             </NavLink>
           </li>
+          <form onSubmit={findBook}>
+          <TextInput  placeholder="filter for available books" type="text" className="my-2 inline-block  lg:ml-40 mr-2"  disabled />
+          <Button type="submit" className="bg-amber-500 inline-block">Filter</Button>
+          </form>
         </ul>
       </div>
-    {books.length>0 && <Books books={books}/>} 
+           {searchButtonClicked ? <Books books={searchedBook} />:  <Books books={books}/>} 
     </div>
   );
 }
