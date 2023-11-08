@@ -20,8 +20,8 @@ export default function Footers() {
             <div>
               <Footer.Title title="about" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Flowbite</Footer.Link>
-                <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                <Footer.Link href="#">Library</Footer.Link>
+                <Footer.Link href="#">Scientia</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
@@ -44,11 +44,11 @@ export default function Footers() {
         <div className="w-full flex flex-col items-center sm:justify-between p-4">
           <Footer.Copyright href="/" by="somrat™" year={2023} className='my-2'/>
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center md:my-2">
-            <Footer.Icon href="#" icon={BsFacebook} />
-            <Footer.Icon href="#" icon={BsInstagram} />
-            <Footer.Icon href="#" icon={BsTwitter} />
-            <Footer.Icon href="#" icon={BsGithub} />
-            <Footer.Icon href="#" icon={BsDribbble} />
+            <Footer.Icon href="/" icon={BsFacebook} />
+            <Footer.Icon href="/" icon={BsInstagram} />
+            <Footer.Icon href="/" icon={BsTwitter} />
+            <Footer.Icon href="/" icon={BsGithub} />
+            <Footer.Icon href="/" icon={BsDribbble} />
           </div>
         </div>
       </div>

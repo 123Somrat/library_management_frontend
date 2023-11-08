@@ -1,21 +1,24 @@
-import React from 'react'
-import Banner from '../../Component/Banner/Banner'
-import BookesCategory from '../../Component/BookesCategory/BookesCategory'
-import Footers from '../../Component/Footers/Footers'
+import React from "react";
+import Banner from "../../Component/Banner/Banner";
+import BookesCategory from "../../Component/BookesCategory/BookesCategory";
+import Footers from "../../Component/Footers/Footers";
+import NewsLetter from "../../Component/NewsLetter/NewsLetter";
 
 export default function Home() {
   return (
     <div>
-      
-       <section>
-       <Banner/>
-       </section>
       <section>
-         <BookesCategory/>
+        <Banner />
+      </section>
+      <section>
+        <BookesCategory />
+      </section>
+      <section>
+        <NewsLetter />
       </section>
       <footer>
-         <Footers/>
+        <Footers />
       </footer>
-      </div>
-  )
+    </div>
+  );
 }
