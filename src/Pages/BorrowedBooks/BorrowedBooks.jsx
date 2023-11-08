@@ -14,7 +14,7 @@ export default function BorrowedBooks() {
         .then(data=>setBooks(data))
 
     },[books])
-   console.log(books)
+   
   return (
     <div>
        <div className='grid justify-center md:mx-8 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8'>

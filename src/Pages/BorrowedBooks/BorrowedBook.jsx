@@ -12,7 +12,7 @@ export default function BorrowedBook({book,datas,setData}) {
         returnDate
       } = book;
 
-     
+     console.log(book)
 
   const BookReturn = (id) =>{
       
