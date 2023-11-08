@@ -1,6 +1,7 @@
 import React from "react";
 import Lottie from "lottie-react";
 import notFound from "../../../public/Animation - 1699306479268.json";
+import { Helmet } from "react-helmet";
 export default function NotFound() {
   return (
     <div>

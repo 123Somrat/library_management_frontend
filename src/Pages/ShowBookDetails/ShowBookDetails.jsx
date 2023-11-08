@@ -44,6 +44,7 @@ export default function ShowBookDetails() {
       imageUrl,
       bookName,
       category,
+      quantity,
       borrowedDate,
       returnDate,
       userEmail: User.email,
@@ -77,6 +78,20 @@ export default function ShowBookDetails() {
       });
     setOpenModal(false);
   };
+
+/*
+  fetch(`http://localhost:5000/decrementbookquantity/${_id}`,{
+      method : "PATCH",
+      headers : {
+         "content-type" : "application/json"
+      },
+      body:JSON.stringify({quantity})
+    })
+    .then(res=>console.log(res))
+
+*/
+
+
 
   //console.log(typeof quantity)
   return (

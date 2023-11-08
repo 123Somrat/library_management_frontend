@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+
 import Swal from "sweetalert2";
 
 
@@ -12,7 +12,7 @@ export default function BorrowedBook({book,datas,setData}) {
         returnDate
       } = book;
 
-     console.log(book)
+  
 
   const BookReturn = (id) =>{
       
@@ -40,24 +40,11 @@ export default function BorrowedBook({book,datas,setData}) {
       }
     });
 
-
+  
 
 
   
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
    // fetch(`http://localhost:5000/bookreturn/${id}`,{
      // method:"delete",
@@ -65,12 +52,6 @@ export default function BorrowedBook({book,datas,setData}) {
   // .then(res=>console.log(res))
    // .then(data=>console.log(data))
    // .catch(err=>console.log(err))
- 
-
-
-      
-
-
 
   return (
     <div>
