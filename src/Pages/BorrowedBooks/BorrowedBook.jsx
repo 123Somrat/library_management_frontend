@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 
-export default function BorrowedBook({book}) {
+
+export default function BorrowedBook({book,datas,setData}) {
     const {
         _id,
         bookName,
@@ -10,6 +11,65 @@ export default function BorrowedBook({book}) {
         borrowedDate,
         returnDate
       } = book;
+
+     
+
+  const BookReturn = (id) =>{
+      
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, return it!",
+    }).then((res) => {
+      if (res.isConfirmed) {
+        fetch(`http://localhost:5000/bookreturn/${id}`, {
+          method: "delete",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedcount > 0) {
+             return Swal.fire("Returned!", "Your book has been return Successfully.", "success");
+            }
+            const remainingBooks = datas.filter((data) => data._id !== id);
+            setData(remainingBooks);
+          });
+      }
+    });
+
+
+
+
+  
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   // fetch(`http://localhost:5000/bookreturn/${id}`,{
+     // method:"delete",
+   // })
+  // .then(res=>console.log(res))
+   // .then(data=>console.log(data))
+   // .catch(err=>console.log(err))
+ 
+
+
+      
+
 
 
   return (
@@ -31,20 +91,16 @@ export default function BorrowedBook({book}) {
           <p className="text-gray-400 text-md">returnDate : {returnDate}</p>
 
           <div className="flex flex-row-reverse">
-            <Link
-              to={`/bookdetails/${_id}`}
+            <button
+              onClick={()=>BookReturn(_id)}
               className="text-white bg-amber-600  hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
              Return
-            </Link>
+            </button>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
     </div>
   )
 }

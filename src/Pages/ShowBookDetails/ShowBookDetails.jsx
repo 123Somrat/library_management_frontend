@@ -112,7 +112,7 @@ const handleSubmit = (e)=>{
           </div>
           <TextInput id="date" type="date" required name="returndate"/>
         </div>
-        <Button type="submit" className="bg-amber-600 block mx-auto">Submit</Button>
+        <Button type="submit" className="bg-amber-600 block mx-auto my-4">Submit</Button>
         <p></p>
         </form>
       </div>
@@ -141,12 +141,13 @@ const handleSubmit = (e)=>{
         <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-justify">
           Description : {des}
         </p>
-        <p className="text-gray-400 mb-2">Available  : {Number(quantity)}</p>
+        <p className="text-gray-400 mb-2">{Number(quantity)<=0 ?<><span>Status</span> : <span className="text-red-400">Not Available</span> </>: <>Available : <span className="text-red-600">{Number(quantity)}</span></> }</p>
         <span className="bg-blue-100 w-[100px] text-blue-800 text-xs font-semibold  px-2 py-2 rounded dark:bg-blue-200 dark:text-blue-800 ">
           ratings : {rating}
         </span>
         <div className="my-8">
-        {Number(quantity)<=0 ?<button type="button" className=" text-white bg-amber-500 hover:bg-amber-700  focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 disabled">Borrow</button> :<button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" className="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900" onClick={openModel}>Borrow</button>}
+          
+        {Number(quantity)<=0 ?<button  type="button" className=" text-white bg-amber-500 hover:bg-amber-700  focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 disabled">Borrow</button> :<button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" className="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900" onClick={openModel}>Borrow</button>}
          <Link to={`/readbook/${_id}`}><button type="button" className="focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Read</button></Link>
         </div>
       </div>
