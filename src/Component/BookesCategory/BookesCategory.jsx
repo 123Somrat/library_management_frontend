@@ -1,5 +1,5 @@
 //import programmingSvg from "../../assets/programming-web-code-black-out"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import { Link, NavLink } from "react-router-dom";
 import Books from "../Books/Books";
 
@@ -8,7 +8,7 @@ export default function BookesCategory() {
 
   const getAllBooks = (e) =>{
          const query  = e?.target?.name;
-        
+        console.log("getall books call from useEffect")
        // get all books
        fetch(`http://localhost:5000/books/${query}`)
        .then(res=>res.json())
@@ -16,6 +16,12 @@ export default function BookesCategory() {
 
     
   }
+  // load all boks data when website load on first time
+  useEffect(()=>{
+    fetch(`http://localhost:5000/books/allbooks`)
+    .then(res=>res.json())
+    .then(data=>setBooks(data))
+  },[])
 
   return (
     <div>
