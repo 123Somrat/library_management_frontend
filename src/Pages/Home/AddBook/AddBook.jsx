@@ -1,6 +1,5 @@
-import axios from "axios";
-import { useEffect } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 export default function AddBook() {
   // Getting form Data
   const handleSubmit = (e) => {
@@ -27,7 +26,7 @@ export default function AddBook() {
       quantity,
       category,
     };
-   
+
     /*
     fetch("http://localhost:5000/createbook", {
       method: "POST",
@@ -45,25 +44,30 @@ export default function AddBook() {
     }));
     */
 
-  // backend api
-  const url = "http://localhost:5000/createbook";
-  
- // send book info in backend
- axios.post(url,book)
- .then(data=>Swal.fire({
-  title: 'succes!',
-  text: 'book added successfully',
-  icon: 'success',
-  confirmButtonText: 'ok'
-}))
+    // backend api
+    const url = "http://localhost:5000/createbook";
 
+    // send book info in backend
+    axios.post(url, book).then((data) =>
+      Swal.fire({
+        title: "succes!",
+        text: "book added successfully",
+        icon: "success",
+        confirmButtonText: "ok",
+      })
+    );
 
-      // reset the form after adding book
-      form.reset()
+    // reset the form after adding book
+    form.reset();
   };
 
   return (
     <div className="my-8 mx-4">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Add Book</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <h1 className="text-center my-4 text-xl text-transparent  bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700">
         Add Book
       </h1>

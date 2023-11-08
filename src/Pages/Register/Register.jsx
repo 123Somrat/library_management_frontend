@@ -2,104 +2,112 @@ import { Link, useNavigate } from "react-router-dom";
 import booklogo from "../../assets/book-4986.svg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/Providers";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 export default function Register() {
-    // import
-const {CreateUser} = useContext(AuthContext)
-const navigate = useNavigate()
-const [fNameError,setFnameError]=useState("")
-const [lNameError,setlnameError]=useState("")
-const [emailError,setEmailError] = useState("")
-const [passwordError,setPasswordError] = useState("")
-  const handleSubmit = (e)=>{
+  // import
+  const { CreateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [fNameError, setFnameError] = useState("");
+  const [lNameError, setlnameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // select the form
-      const form = e.target;
-   
-      // collecting form data
-        
-      const fname = form.fname.value;
-      const lname = form.lname.value;
-      const email = form.email.value;
-      const password = form.password.value;
-      // email regex
-      const emailRegex = /.+\@.+\..+/
+    const form = e.target;
 
-      // validate firstname field
-     if(fname==="" || fname.length<6){
-       setFnameError("firstName must be 6 cherecter long")
-       return
-     }else{
-         setFnameError("")
-     }
+    // collecting form data
 
-      // validate lastName field
-     if(lname==="" || lname.length<6){
-      setlnameError("lastName must be 6 cherecter long")
-      return
-    }else{
-      setlnameError("")
+    const fname = form.fname.value;
+    const lname = form.lname.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    // email regex
+    const emailRegex = /.+\@.+\..+/;
+
+    // validate firstname field
+    if (fname === "" || fname.length < 6) {
+      setFnameError("firstName must be 6 cherecter long");
+      return;
+    } else {
+      setFnameError("");
+    }
+
+    // validate lastName field
+    if (lname === "" || lname.length < 6) {
+      setlnameError("lastName must be 6 cherecter long");
+      return;
+    } else {
+      setlnameError("");
     }
     //validate email
-    if(email==="" || !email.match(emailRegex)){
-       setEmailError("email must be follow valid email pattern")
-       return
-    }else{
-       setEmailError("")
+    if (email === "" || !email.match(emailRegex)) {
+      setEmailError("email must be follow valid email pattern");
+      return;
+    } else {
+      setEmailError("");
     }
     // validate password
-     if(password ==="" || password.length<7){
-       setPasswordError("Password mustbe 8 cherecter long")
-       return
-     }else{
-         setPasswordError("")
-     }
+    if (password === "" || password.length < 7) {
+      setPasswordError("Password mustbe 8 cherecter long");
+      return;
+    } else {
+      setPasswordError("");
+    }
 
-      CreateUser(email,password)
-      .then(user=>{Swal.fire({
-        title: 'success',
-        text: "User Created Successfully",
-        icon: 'success',
-        confirmButtonText: 'ok'
-      })
-       const {email}=user.user;
-       const {creationTime} = user.user.metadata;
-       const {lastSignInTime} = user.user.metadata;
+    CreateUser(email, password)
+      .then((user) => {
+        Swal.fire({
+          title: "success",
+          text: "User Created Successfully",
+          icon: "success",
+          confirmButtonText: "ok",
+        });
+        const { email } = user.user;
+        const { creationTime } = user.user.metadata;
+        const { lastSignInTime } = user.user.metadata;
         const userInfo = {
-             fname,
-             lname,
-             email,
-             creationTime,
-             lastSignInTime
-        }
-       fetch("http://localhost:5000/users",{
-          method : "post",
-          headers:{
-             "content-type" : "application/json"
+          fname,
+          lname,
+          email,
+          creationTime,
+          lastSignInTime,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
           },
-          body:JSON.stringify(userInfo)
-       })
-       .then(res=>res.json())
-       .then(data=>console.log(data))
-       
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
 
-       return navigate("/auth/login") 
-    })
-      .catch(err=>Swal.fire({
-        title: 'error!',
-        text: "some thing wrong",
-        icon: 'error',
-        confirmButtonText: 'ok'
-      }))
+        return navigate("/auth/login");
+      })
+      .catch((err) =>
+        Swal.fire({
+          title: "error!",
+          text: "some thing wrong",
+          icon: "error",
+          confirmButtonText: "ok",
+        })
+      );
 
-    form.reset()
-  }
-
-
+    form.reset();
+  };
 
   return (
     <div className="mx-12 my-12">
+      <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Register</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
+      </div>
       <img src={booklogo} className="w-8 h-8 m-2 mx-auto" />
       <p className="text-xs text-center text-amber-700">
         Register to use our platform
@@ -119,7 +127,6 @@ const [passwordError,setPasswordError] = useState("")
               name="fname"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
-              
             />
             {fNameError && <p className="text-red-500 m-1">{fNameError}</p>}
           </div>
@@ -136,7 +143,6 @@ const [passwordError,setPasswordError] = useState("")
               name="lname"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Doe"
-             
             />
             {lNameError && <p className="text-red-500 m-1">{lNameError}</p>}
           </div>
@@ -153,7 +159,6 @@ const [passwordError,setPasswordError] = useState("")
               name="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-amber-500 dark:focus:border-amber-500"
               placeholder="john.doe@company.com"
-             
             />
             {emailError && <p className="text-red-500 m-1">{emailError}</p>}
           </div>
@@ -170,9 +175,10 @@ const [passwordError,setPasswordError] = useState("")
               name="password"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-amber-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:amber-blue-500 dark:focus:border-amber-500"
               placeholder="•••••••••"
-              
             />
-            {passwordError && <p className="text-red-500 m-1">{passwordError}</p>}
+            {passwordError && (
+              <p className="text-red-500 m-1">{passwordError}</p>
+            )}
           </div>
         </div>
 
@@ -182,7 +188,12 @@ const [passwordError,setPasswordError] = useState("")
         >
           Register
         </button>
-        <span className='text-xs text-amber-400 inline-block'>Already have an account ?</span><Link to={"/auth/login"}><span className='text-amber-700 mx-1 text-xs underline'>Login </span></Link> 
+        <span className="text-xs text-amber-400 inline-block">
+          Already have an account ?
+        </span>
+        <Link to={"/auth/login"}>
+          <span className="text-amber-700 mx-1 text-xs underline">Login </span>
+        </Link>
       </form>
     </div>
   );
