@@ -9,9 +9,10 @@ export const AuthContext= createContext()
 
 export default function Providers({children}) {
 const [User,setUser] = useState(null);
-
+const [loading,setLoading]=useState(true)
 
 const CreateUser = (email,password) => {
+  
        return createUserWithEmailAndPassword(auth, email, password)
 }
 
@@ -27,6 +28,7 @@ useEffect(()=>{
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/auth.user
           setUser(user)
+          setLoading(false)
           // ...
         } else {
           // User is signed out
@@ -69,7 +71,8 @@ const data = {
   CreateUser,
   LoginUser,
   userSignOut,
-  User
+  User,
+  loading
 }
  
 return(
