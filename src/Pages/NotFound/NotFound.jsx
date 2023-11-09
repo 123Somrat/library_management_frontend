@@ -10,7 +10,7 @@ export default function NotFound() {
         <title>Not Found</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <Lottie animationData={notFound} loop={true} className="mx-12" />
+      <Lottie animationData={notFound} loop={true} className="mx-12 h-[555px] " />
     </div>
   );
 }
