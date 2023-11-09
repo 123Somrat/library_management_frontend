@@ -100,7 +100,7 @@ export default function Register() {
   };
 
   return (
-    <div className="mx-12 my-12">
+    <div className="mx-12 my-12 md:mb-[193px]">
       <div>
         <Helmet>
           <meta charSet="utf-8" />

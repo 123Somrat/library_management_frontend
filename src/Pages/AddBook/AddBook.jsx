@@ -97,11 +97,11 @@ export default function AddBook() {
       );
 
     // reset the form after adding book
-    //form.reset();
+    form.reset();
   };
 
   return (
-    <div className="my-8 mx-4">
+    <div className="my-8 mx-4 md:mb-28">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Add Book</title>

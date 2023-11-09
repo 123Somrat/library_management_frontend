@@ -9,6 +9,8 @@ import NotFound from "../Pages/NotFound/NotFound";
 import ReadingBook from "../Pages/ReadingBook/ReadingBook";
 import BorrowedBooks from "../Pages/BorrowedBooks/BorrowedBooks";
 import AddBook from "../Pages/AddBook/AddBook";
+import Spaces from "../Pages/Spaces/Spaces";
+import RequestBook from "../Pages/RequestBook/RequestBook";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +56,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/space",
-        element: <h1>This Feature comeing song</h1>,
+        element: <Spaces/>,
+      },
+      {
+        path:"/requestbook",
+        element:<RequestBook/>
       },
       {
         path: "/requestbook",

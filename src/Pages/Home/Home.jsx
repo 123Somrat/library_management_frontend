@@ -16,9 +16,7 @@ export default function Home() {
       <section>
         <NewsLetter />
       </section>
-      <footer>
-        <Footers />
-      </footer>
+
     </div>
   );
 }

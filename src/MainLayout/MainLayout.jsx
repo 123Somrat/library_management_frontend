@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Nav from "../Component/Nav/Nav";
 import { Helmet } from "react-helmet";
+import Footers from "../Component/Footers/Footers";
+
 export default function MainLayout() {
   return (
     <div className="max-w-6xl mx-auto">
@@ -15,6 +17,7 @@ export default function MainLayout() {
       <div>
         <Outlet />
       </div>
+      <Footers/>
     </div>
   );
 }

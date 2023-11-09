@@ -43,7 +43,7 @@ export default function Login() {
   };
 
   return (
-    <div className="mx-12 md:mx-40 lg:mx-56 my-12 lg:shadow-md lg:px-4 py-8">
+    <div className="mx-12 md:mx-40 lg:mx-56 my-12 lg:shadow-md lg:px-4 py-8 md:mb-[169px]">
       <div>
         <Helmet>
           <meta charSet="utf-8" />
