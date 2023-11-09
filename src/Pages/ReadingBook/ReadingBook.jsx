@@ -88,6 +88,11 @@ export default function ReadingBook() {
 
   return (
     <div >
+         <Helmet>
+          <meta charSet="utf-8" />
+          <title>ReadingBook</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
     <PDFViewer style={{width:"1200px",height:"650px",backgroundColor: "#d11fb6"}}>
 
       {/* Start of the document*/}

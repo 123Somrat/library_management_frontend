@@ -108,7 +108,7 @@ export default function ShowBookDetails() {
       <div className="bg-red-600">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>{`/bookDetails/${_id}`}</title>
+          <title>BookDetails</title>
           <link rel="canonical" href="http://mysite.com/example" />
         </Helmet>
         <Modal
