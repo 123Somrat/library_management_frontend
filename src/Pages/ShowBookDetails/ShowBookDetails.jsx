@@ -150,7 +150,7 @@ export default function ShowBookDetails() {
         </Modal>
       </div>
 
-      <div className="my-12 mx-8 flex flex-col md:flex-row h-[550px]">
+      <div className="my-12 mx-8 flex flex-col md:flex-row md:h-[550px]">
         <img
           className="object-cover w-full rounded-t-lg h-[250px] md:h-auto  md:rounded-none md:rounded-l-lg"
           src={imageUrl}
