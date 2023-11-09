@@ -1,6 +1,10 @@
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { useContext } from "react";
+import axios from "axios";
+import { AuthContext } from "../../Providers/Providers";
 export default function AddBook() {
+  const { User } = useContext(AuthContext);
   // Getting form Data
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,9 +29,11 @@ export default function AddBook() {
       imageUrl,
       quantity,
       category,
+      User,
     };
 
     /*
+    
     fetch("http://localhost:5000/createbook", {
       method: "POST",
       headers: {
@@ -41,24 +47,57 @@ export default function AddBook() {
       text: 'book added successfully',
       icon: 'success',
       confirmButtonText: 'ok'
-    }));
-    */
-
+    }).catch(err=>console.log(err)));
+    
+*/
     // backend api
+
     const url = "http://localhost:5000/createbook";
 
-    // send book info in backend
-    axios.post(url, book).then((data) =>
-      Swal.fire({
-        title: "succes!",
-        text: "book added successfully",
-        icon: "success",
-        confirmButtonText: "ok",
-      })
+    // useing axios interceptor for manage network related issue
+    axios.interceptors.response.use(
+      (response) => {
+        // Do something with successful response
+        return response;
+      },
+      (error) => {
+        // Do something with response error
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error(
+            "Response error:",
+            error.response.status,
+            error.response.data
+          );
+        }
+
+        return Promise.reject(error);
+      }
     );
+    // send book info in backend
+    axios
+      .post(url, book)
+      .then((data) =>
+        Swal.fire({
+          title: "succes!",
+          text: "book added successfully",
+          icon: "success",
+          confirmButtonText: "ok",
+        })
+      )
+
+      .catch((err) =>
+        Swal.fire({
+          title: "error!",
+          text: "Opps Can Not Add Book",
+          icon: "error",
+          confirmButtonText: "ok",
+        })
+      );
 
     // reset the form after adding book
-    form.reset();
+    //form.reset();
   };
 
   return (

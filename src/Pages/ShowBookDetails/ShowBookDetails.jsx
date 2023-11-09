@@ -11,6 +11,7 @@ export default function ShowBookDetails() {
   const [openModal, setOpenModal] = useState(false);
   const [date, setDate] = useState("");
   const { User } = useContext(AuthContext);
+
   // destructure the book object
   const {
     _id,
@@ -66,6 +67,16 @@ export default function ShowBookDetails() {
             icon: "success",
             confirmButtonText: "ok",
           });
+
+          fetch(`http://localhost:5000/decrementbookquantity/${_id}`, {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ quantity }),
+          })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
         }
       })
       .catch((err) => {
@@ -79,7 +90,7 @@ export default function ShowBookDetails() {
     setOpenModal(false);
   };
 
-/*
+  /*
   fetch(`http://localhost:5000/decrementbookquantity/${_id}`,{
       method : "PATCH",
       headers : {
@@ -90,8 +101,6 @@ export default function ShowBookDetails() {
     .then(res=>console.log(res))
 
 */
-
-
 
   //console.log(typeof quantity)
   return (

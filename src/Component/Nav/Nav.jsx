@@ -1,44 +1,48 @@
 import { IoBookSharp } from "react-icons/io5";
-import logo from "../../assets/book-4986.svg"
+import logo from "../../assets/book-4986.svg";
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/Providers";
 
-
 export default function Nav() {
-    //<IoBookSharp classNameName="w-8 h-8 text-amber-600"/>
-    const {User,userSignOut} = useContext(AuthContext);
+  //<IoBookSharp classNameName="w-8 h-8 text-amber-600"/>
+  const { User, userSignOut } = useContext(AuthContext);
 
-    // user signOut function
-   const signOut = () =>{
-       userSignOut()
-   }
-
+  // user signOut function
+  const signOut = () => {
+    userSignOut();
+  };
 
   return (
     <div>
-       <nav className=" dark:bg-gray-900  w-full mx-auto z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+      <nav className=" dark:bg-gray-900  w-full mx-auto z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
         <div className="max-w-screen-xl flex  flex-wrap items-center justify-between mx-auto p-4">
           <Link to={"/"} className="flex items-center">
-          <img src={logo} className="h-8 mr-3" alt="library Logo" />
+            <img src={logo} className="h-8 mr-3" alt="library Logo" />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-transparent  bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700">
               Public Library
             </span>
           </Link>
           <div className="flex md:order-2">
-           {User ? <button
-              type="button"
-              onClick={signOut}
-              className="text-white bg-amber-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              SignOut
-            </button>: <Link to={"auth/login"}> <button
-              type="button"
-              className="text-white bg-amber-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Login
-            </button></Link>
-}
+            {User ? (
+              <button
+                type="button"
+                onClick={signOut}
+                className="text-white bg-amber-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                SignOut
+              </button>
+            ) : (
+              <Link to={"auth/login"}>
+                {" "}
+                <button
+                  type="button"
+                  className="text-white bg-amber-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Login
+                </button>
+              </Link>
+            )}
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"
@@ -83,7 +87,7 @@ export default function Nav() {
                   to={"/books"}
                   className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-amber-600 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
-                    All Book
+                  All Book
                 </NavLink>
               </li>
               <li>
@@ -91,8 +95,7 @@ export default function Nav() {
                   to={"/addBook"}
                   className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-amber-600 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
-                   Add Book
-                  
+                  Add Book
                 </NavLink>
               </li>
               <li>
@@ -105,7 +108,7 @@ export default function Nav() {
               </li>
               <li>
                 <NavLink
-                  to={"/borrowedBook"}
+                  to={"/space"}
                   className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-amber-600 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Spaces & Rooms
@@ -113,7 +116,7 @@ export default function Nav() {
               </li>
               <li>
                 <NavLink
-                  to={"/borrowedBook"}
+                  to={"/requestbook"}
                   className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-amber-600 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Request for add a book

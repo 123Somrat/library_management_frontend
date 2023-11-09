@@ -1,52 +1,52 @@
 //import programmingSvg from "../../assets/programming-web-code-black-out"
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Books from "../Books/Books";
-import { Button, TextInput } from 'flowbite-react';
+import { Button, TextInput } from "flowbite-react";
 export default function BookesCategory() {
- const [books,setBooks]= useState([])
- const [searchedBook,setSearchedBook] = useState([])
- const [searchButtonClicked,setSearchButtonClicked]=useState(false)
-  const getAllBooks = (e) =>{
-    setSearchButtonClicked(false)
-         const query  = e?.target?.name;
-        console.log("getall books call from useEffect")
-       // get all books
-       fetch(`http://localhost:5000/books/${query}`)
-       .then(res=>res.json())
-       .then(data=>setBooks(data))
+  const [books, setBooks] = useState([]);
+  const [searchedBook, setSearchedBook] = useState([]);
+  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
+  const getAllBooks = (e) => {
+    setSearchButtonClicked(false);
+    const query = e?.target?.name;
 
-    
-  }
+    // get all books
+    fetch(`http://localhost:5000/books/${query}`)
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  };
   // load all boks data when website load on first time
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`http://localhost:5000/books/allbooks`)
-    .then(res=>res.json())
-    .then(data=>setBooks(data))
-  },[])
- // findBook based on serach if here only this booked are showing which books quantity more then 0 or available
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  }, []);
 
-const findBook = (e) =>{
-  e.preventDefault()
+  // findBook based on serach if here only this booked are showing which books quantity more then 0 or available
 
-  setSearchButtonClicked(true)
-  
+  const findBook = (e) => {
+    e.preventDefault();
 
-  // fetching available books 
-  fetch(`http://localhost:5000/availablebooks`)
-  .then(res=>res.json())
-  .then(data=>setSearchedBook(data))
-}
+    setSearchButtonClicked(true);
 
-
+    // fetching available books
+    fetch(`http://localhost:5000/availablebooks`)
+      .then((res) => res.json())
+      .then((data) => setSearchedBook(data));
+  };
 
   return (
     <div>
       <div className="border-b  border-gray-200 dark:border-gray-700">
         <ul className="flex flex-wrap justify-center -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
           <li className="mr-2">
-            <Link className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" onClick={getAllBooks} name="allbooks">
+            <Link
+              className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
+              onClick={getAllBooks}
+              name="allbooks"
+            >
               All Bookes
             </Link>
           </li>
@@ -70,8 +70,11 @@ const findBook = (e) =>{
             </NavLink>
           </li>
           <li className="mr-2">
-            <NavLink className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" name="testing"
-              onClick={getAllBooks}>
+            <NavLink
+              className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
+              name="testing"
+              onClick={getAllBooks}
+            >
               <svg
                 className="w-4 h-4 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
                 aria-hidden="true"
@@ -81,12 +84,15 @@ const findBook = (e) =>{
               >
                 <path d="M5 11.424V1a1 1 0 1 0-2 0v10.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.228 3.228 0 0 0 0-6.152ZM19.25 14.5A3.243 3.243 0 0 0 17 11.424V1a1 1 0 0 0-2 0v10.424a3.227 3.227 0 0 0 0 6.152V19a1 1 0 1 0 2 0v-1.424a3.243 3.243 0 0 0 2.25-3.076Zm-6-9A3.243 3.243 0 0 0 11 2.424V1a1 1 0 0 0-2 0v1.424a3.228 3.228 0 0 0 0 6.152V19a1 1 0 1 0 2 0V8.576A3.243 3.243 0 0 0 13.25 5.5Z" />
               </svg>
-              Testing 
+              Testing
             </NavLink>
           </li>
           <li className="mr-2">
-            <p className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" name="science_fiction"
-              onClick={getAllBooks}>
+            <NavLink
+              className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
+              name="science_fiction"
+              onClick={getAllBooks}
+            >
               <svg
                 className="w-4 h-4 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
                 aria-hidden="true"
@@ -97,21 +103,35 @@ const findBook = (e) =>{
                 <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
               </svg>
               Science Fiction
-            </p>
+            </NavLink>
           </li>
           <li>
-            <NavLink className="inline-block p-4 text-gray-400 rounded-t-lg hover:border-b-2  dark:text-gray-500" name="time_management"
-              onClick={getAllBooks}>
+            <NavLink
+              className="inline-block p-4 text-gray-400 rounded-t-lg hover:border-b-2  dark:text-gray-500"
+              name="time_management"
+              onClick={getAllBooks}
+            >
               Time Management
             </NavLink>
           </li>
           <form onSubmit={findBook}>
-          <TextInput  placeholder="filter for available books" type="text" className="my-2 inline-block  lg:ml-40 mr-2"  disabled />
-          <Button type="submit" className="bg-amber-500 inline-block">Filter</Button>
+            <TextInput
+              placeholder="filter for available books"
+              type="text"
+              className="my-2 inline-block  lg:ml-40 mr-2"
+              disabled
+            />
+            <Button type="submit" className="bg-amber-500 inline-block">
+              Filter
+            </Button>
           </form>
         </ul>
       </div>
-           {searchButtonClicked ? <Books books={searchedBook} />:  <Books books={books}/>} 
+      {searchButtonClicked ? (
+        <Books books={searchedBook} />
+      ) : (
+        <Books books={books} />
+      )}
     </div>
   );
 }
