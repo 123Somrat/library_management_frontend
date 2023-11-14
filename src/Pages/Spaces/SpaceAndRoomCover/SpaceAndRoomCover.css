@@ -1,0 +1,8 @@
+.bg_img{
+     background-image: url(" https://www.bsb-muenchen.de/fileadmin/bsb/benutzung/998x400_plaza1_gottstein.jpg");
+     
+     width: auto;
+     height: 400px;
+     filter: brightness(0.7);
+    
+}
