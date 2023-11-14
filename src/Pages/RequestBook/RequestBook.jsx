@@ -10,8 +10,16 @@ export default function RequestBook() {
 
   // import useForm hook from react hook form
   const {register,watch, handleSubmit,formState: { errors },reset} = useForm();
- //
- const onSubmit = data =>console.log(data)
+
+ //create onSubmit function for getting form data and after successfully getting data show a success messege to user
+ const onSubmit = data =>{Swal.fire({
+  title: "success",
+  text: "we received your request,our teams will contact with you as soon as possible",
+  icon: "success",
+  confirmButtonText: "ok",
+})
+
+};
 
 
   //console.log(watch("bookCategory"))
