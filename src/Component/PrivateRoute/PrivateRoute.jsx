@@ -6,17 +6,19 @@ import loadingBook from "../../../public/Animation - 1699404409825.json"
 export default function PrivateRoute({children}) {
     const location = useLocation()
     const {User,loading} = useContext(AuthContext)
-  
+
     if(loading){
         return <Lottie animationData={loadingBook} loop={true} className="mx-12 w-22 h-22"/>
     }
 
-
-if(!User){
+if(!User?.email){
    return  <Navigate to="/auth/login" state={location.pathname}/>
 }
-if(User){
+if(User?.email){
      return children
 }
+
+
+
 
 }

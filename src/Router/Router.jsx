@@ -56,11 +56,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/space",
-        element: <Spaces/>,
+        element: (
+          <PrivateRoute>
+            <Spaces />
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/requestbook",
-        element:<RequestBook/>
+        path: "/requestbook",
+        element: (
+          <PrivateRoute>
+            <RequestBook />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/requestbook",
