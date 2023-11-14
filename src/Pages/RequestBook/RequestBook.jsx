@@ -6,6 +6,13 @@ import ComeingSoon from "../../../public/Animation - 1699535547055.json";
 import Swal from "sweetalert2";
 
 export default function RequestBook() {
+
+
+  // import useForm hook from react hook form
+  const {register,watch, handleSubmit,formState: { errors },reset} = useForm();
+
+
+
   //console.log(watch("bookCategory"))
   //<Lottie animationData={ComeingSoon} loop={true} className="h-[555px]" />
   return (
