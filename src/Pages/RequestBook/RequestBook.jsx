@@ -10,7 +10,8 @@ export default function RequestBook() {
 
   // import useForm hook from react hook form
   const {register,watch, handleSubmit,formState: { errors },reset} = useForm();
-
+ //
+ const onSubmit = data =>console.log(data)
 
 
   //console.log(watch("bookCategory"))
@@ -21,7 +22,7 @@ export default function RequestBook() {
         <meta charSet="utf-8" />
         <title>Request Book</title>
       </Helmet>
-      <form className="flex max-w-md flex-col gap-4 mx-auto">
+      <form className="flex max-w-md flex-col gap-4 mx-auto" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className="mb-2 block">
             <Label htmlFor="bookName" value="Book Name" />
@@ -33,12 +34,14 @@ export default function RequestBook() {
             placeholder="book Name"
             {...register("bookName",{required:true,maxLength:25})}
           />
+           {errors.bookName && <span className="text-red-700 my-1 mx-2 block">book Name is required</span>}
         </div>
         <div>
           <div className="mb-2 block">
             <Label htmlFor="bookAuthorName" value="Book Author Name" />
           </div>
           <TextInput id="bookAuthorName" type="text" {...register("bookAuthorName",{required:true,maxLength:30})}/>
+          {errors.bookAuthorName && <span className="text-red-700 my-1 mx-2 block">book authorName is required</span>}
         </div>
         <div className="mb-2 block">
           <Label htmlFor="bookCategory" value="Select Book Category" />
@@ -48,6 +51,7 @@ export default function RequestBook() {
             <option>Time Management</option>
             <option>Science Fiction</option>
           </Select>
+          {errors.bookAuthorName && <span className="text-red-700 my-1 mx-2 block">book authorName is required</span>}
         </div>
         <Button type="submit" className=" border-amber-700 bg-amber-600">
           Submit
