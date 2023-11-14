@@ -2,6 +2,9 @@ import { Footer } from 'flowbite-react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import librarylogo from "../../assets/book-4986.svg"
 export default function Footers() {
+  const date = new Date();
+  const year = date.getFullYear();
+ 
   return (
     <div>
 <Footer container>
@@ -25,9 +28,9 @@ export default function Footers() {
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Follow us" />
+              <Footer.Title title="Follow me" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Github</Footer.Link>
+                <Footer.Link href="https://github.com/123Somrat">Github</Footer.Link>
                 <Footer.Link href="#">Discord</Footer.Link>
               </Footer.LinkGroup>
             </div>
@@ -42,7 +45,7 @@ export default function Footers() {
         </div>
         <Footer.Divider />
         <div className="w-full flex flex-col items-center sm:justify-between p-4">
-          <Footer.Copyright href="/" by="somrat™" year={2023} className='my-2'/>
+          <Footer.Copyright href="/" by="somrat™" year={year} className='my-2'/>
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center md:my-2">
             <Footer.Icon href="/" icon={BsFacebook} />
             <Footer.Icon href="/" icon={BsInstagram} />

@@ -12,8 +12,10 @@ export default function MainLayout() {
         <title>Home</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
+     <div className="sticky top-0">
 
       <Nav />
+     </div>
       <div>
         <Outlet />
       </div>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
@@ -11,6 +11,10 @@ export default function ShowBookDetails() {
   const [openModal, setOpenModal] = useState(false);
   const [date, setDate] = useState("");
   const { User } = useContext(AuthContext);
+  const [quantity,setBookQuantity] = useState(book.quantity)
+
+
+
 
   // destructure the book object
   const {
@@ -20,7 +24,6 @@ export default function ShowBookDetails() {
     description,
     rating,
     imageUrl,
-    quantity,
     category,
   } = book;
   const des = description.slice(0, 600);
@@ -45,7 +48,7 @@ export default function ShowBookDetails() {
       imageUrl,
       bookName,
       category,
-      quantity,
+      quantity:quantity-1,
       borrowedDate,
       returnDate,
       userEmail: User.email,
@@ -76,7 +79,7 @@ export default function ShowBookDetails() {
             body: JSON.stringify({ quantity }),
           })
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((book) => setBookQuantity(book.quantity));
         }
       })
       .catch((err) => {
@@ -89,6 +92,16 @@ export default function ShowBookDetails() {
       });
     setOpenModal(false);
   };
+
+
+
+
+
+
+
+
+
+
 
   /*
   fetch(`http://localhost:5000/decrementbookquantity/${_id}`,{
@@ -104,7 +117,7 @@ export default function ShowBookDetails() {
 
   //console.log(typeof quantity)
   return (
-    <div>
+    <div >
       <div className="bg-red-600">
         <Helmet>
           <meta charSet="utf-8" />
@@ -152,7 +165,7 @@ export default function ShowBookDetails() {
 
       <div className="my-12 mx-8 flex flex-col md:flex-row md:h-[550px]">
         <img
-          className="object-cover w-full rounded-t-lg h-[250px] md:h-auto  md:rounded-none md:rounded-l-lg"
+          className="object-cover w-full rounded-t-lg h-[250px] md:h-[500px]  md:rounded-none md:rounded-l-lg"
           src={imageUrl}
           alt=""
         />

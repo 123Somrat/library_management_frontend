@@ -8,6 +8,7 @@ export default function BorrowedBook({book,datas,setData}) {
         bookName,
         imageUrl,
         category,
+        quantity,
         borrowedDate,
         returnDate
       } = book;
@@ -15,7 +16,7 @@ export default function BorrowedBook({book,datas,setData}) {
   
 
   const BookReturn = (id) =>{
-      
+      console.log(quantity)
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -34,7 +35,21 @@ export default function BorrowedBook({book,datas,setData}) {
             if (data.deletedcount > 0) {
              return Swal.fire("Returned!", "Your book has been return Successfully.", "success");
             }
-            const remainingBooks = datas.filter((data) => data._id !== id);
+            
+
+            // fetch call for update the book quantity
+           
+            fetch(`http://localhost:5000/incrementbookquantity/${_id}`, {
+              method: "PATCH",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ quantity,bookName}),
+            })
+              
+
+            const remainingBooks = datas?.filter((data) => data._id !== id);
+
             setData(remainingBooks);
           });
       }

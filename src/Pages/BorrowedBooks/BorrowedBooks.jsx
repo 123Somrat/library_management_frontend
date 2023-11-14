@@ -23,7 +23,7 @@ export default function BorrowedBooks() {
         <title>Borrowed Book</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      {books.length === 0 ? (
+      {books?.length === 0 ? (
         <Lottie animationData={emptyBookCard} loop={true} className="h-[550px]"/>
       ) : (
         <div className="grid justify-center md:mx-8 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
