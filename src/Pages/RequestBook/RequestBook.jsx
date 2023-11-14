@@ -31,17 +31,18 @@ export default function RequestBook() {
             id="bookName"
             type="text"
             placeholder="book Name"
+            {...register("bookName",{required:true,maxLength:25})}
           />
         </div>
         <div>
           <div className="mb-2 block">
             <Label htmlFor="bookAuthorName" value="Book Author Name" />
           </div>
-          <TextInput id="bookAuthorName" type="text" />
+          <TextInput id="bookAuthorName" type="text" {...register("bookAuthorName",{required:true,maxLength:30})}/>
         </div>
         <div className="mb-2 block">
           <Label htmlFor="bookCategory" value="Select Book Category" />
-          <Select id="countries">
+          <Select id="countries" {...register("bookCategory",{required:true})}>
             <option>Programming</option>
             <option>Testing</option>
             <option>Time Management</option>
