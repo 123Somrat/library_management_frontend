@@ -35,6 +35,7 @@ export default function RequestBook() {
         <meta charSet="utf-8" />
         <title>Request Book</title>
       </Helmet>
+      <h1 className="text-center text-3xl m-4 text-transparent  bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700">Request for Add Book</h1>
       <form
         className="flex max-w-md flex-col gap-4 mx-auto"
         onSubmit={handleSubmit(onSubmit)}
