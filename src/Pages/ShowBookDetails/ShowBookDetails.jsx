@@ -207,7 +207,7 @@ export default function ShowBookDetails() {
         </div>
       </div>
       <h1 className="text-3xl m-8">Books related to this category</h1>
-      <div className="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-4mb-8">
+      <div className="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         {sendAllBooks?.map((book) => (
           <ShowRelatedTypeBooks key={book._id} book={book} />
         ))}
