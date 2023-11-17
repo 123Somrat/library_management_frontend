@@ -5,28 +5,20 @@ import { Helmet } from "react-helmet";
 import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
 import booklogo from "../../assets/book-4986.svg";
 import { AuthContext } from "../../Providers/Providers";
+import ShowRelatedTypeBooks from "./ShowRelatedTypeBooks";
 export default function ShowBookDetails() {
   // get bbok data
-  const book = useLoaderData();
+  const { book, sendAllBooks } = useLoaderData();
+  console.log(sendAllBooks);
   const [openModal, setOpenModal] = useState(false);
   const [date, setDate] = useState("");
   const { User } = useContext(AuthContext);
-  const [quantity,setBookQuantity] = useState(book.quantity)
-
-
-
+  const [quantity, setBookQuantity] = useState(book.quantity);
 
   // destructure the book object
-  const {
-    _id,
-    bookName,
-    authorName,
-    description,
-    rating,
-    imageUrl,
-    category,
-  } = book;
-  const des = description.slice(0, 600);
+  const { _id, bookName, authorName, description, rating, imageUrl, category } =
+    book;
+  const des = description?.slice(0, 600);
   const onCloseModal = () => {
     setOpenModal(false);
   };
@@ -48,7 +40,7 @@ export default function ShowBookDetails() {
       imageUrl,
       bookName,
       category,
-      quantity:quantity-1,
+      quantity: quantity - 1,
       borrowedDate,
       returnDate,
       userEmail: User.email,
@@ -93,16 +85,6 @@ export default function ShowBookDetails() {
     setOpenModal(false);
   };
 
-
-
-
-
-
-
-
-
-
-
   /*
   fetch(`http://localhost:5000/decrementbookquantity/${_id}`,{
       method : "PATCH",
@@ -117,7 +99,7 @@ export default function ShowBookDetails() {
 
   //console.log(typeof quantity)
   return (
-    <div >
+    <div>
       <div className="bg-red-600">
         <Helmet>
           <meta charSet="utf-8" />
@@ -223,6 +205,12 @@ export default function ShowBookDetails() {
             </Link>
           </div>
         </div>
+      </div>
+      <h1 className="text-3xl m-8">Books related to this category</h1>
+      <div className="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {sendAllBooks?.map((book) => (
+          <ShowRelatedTypeBooks key={book._id} book={book} />
+        ))}
       </div>
     </div>
   );
