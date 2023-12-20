@@ -7,19 +7,25 @@ export default function BookesCategory() {
   const [books, setBooks] = useState([]);
   const [searchedBook, setSearchedBook] = useState([]);
   const [searchButtonClicked, setSearchButtonClicked] = useState(false);
+
+
+
+
+
+
   const getAllBooks = (e) => {
     setSearchButtonClicked(false);
     const query = e?.target?.name;
 
     // get all books
-    fetch(`http://localhost:5000/books/${query}`)
+    fetch(`http://localhost:3000/books/${query}`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   };
   // load all boks data when website load on first time
 
   useEffect(() => {
-    fetch(`http://localhost:5000/books/allbooks`)
+    fetch(`http://localhost:3000/books/allbooks`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
@@ -32,7 +38,7 @@ export default function BookesCategory() {
     setSearchButtonClicked(true);
 
     // fetching available books
-    fetch(`http://localhost:5000/availablebooks`)
+    fetch(`http://localhost:3000/availablebooks`)
       .then((res) => res.json())
       .then((data) => setSearchedBook(data));
   };
