@@ -18,7 +18,7 @@ export default function BookesCategory() {
     const query = e?.target?.name;
 
     // get all books
-    fetch(`http://localhost:3000/books/${query}`)
+    fetch(`https://library-management-2lyp.onrender.com/books/${query}`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   };
@@ -38,7 +38,7 @@ export default function BookesCategory() {
     setSearchButtonClicked(true);
 
     // fetching available books
-    fetch(`http://localhost:3000/availablebooks`)
+    fetch(`https://library-management-2lyp.onrender.com/availablebooks`)
       .then((res) => res.json())
       .then((data) => setSearchedBook(data));
   };
