@@ -75,7 +75,7 @@ export default function Register() {
           creationTime,
           lastSignInTime,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("http://localhost:3000/users", {
           method: "post",
           headers: {
             "content-type": "application/json",

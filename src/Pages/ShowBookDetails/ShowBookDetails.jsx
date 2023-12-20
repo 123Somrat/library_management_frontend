@@ -46,7 +46,7 @@ export default function ShowBookDetails() {
       userEmail: User.email,
     };
 
-    fetch("http://localhost:5000/books/borrowedbooks", {
+    fetch("http://localhost:3000/books/borrowedbooks", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,7 @@ export default function ShowBookDetails() {
             confirmButtonText: "ok",
           });
 
-          fetch(`http://localhost:5000/decrementbookquantity/${_id}`, {
+          fetch(`http://localhost:3000/decrementbookquantity/${_id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",

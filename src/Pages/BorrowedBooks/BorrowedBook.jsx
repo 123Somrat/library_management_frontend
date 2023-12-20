@@ -23,7 +23,7 @@ export default function BorrowedBook({ book, datas, setData }) {
       confirmButtonText: "Yes, return it!",
     }).then((res) => {
       if (res.isConfirmed) {
-        fetch(`http://localhost:5000/bookreturn/${id}`, {
+        fetch(`http://localhost:3000/bookreturn/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())
@@ -38,7 +38,7 @@ export default function BorrowedBook({ book, datas, setData }) {
 
             // fetch call for update the book quantity
 
-            fetch(`http://localhost:5000/incrementbookquantity/${_id}`, {
+            fetch(`http://localhost:3000/incrementbookquantity/${_id}`, {
               method: "PATCH",
               headers: {
                 "content-type": "application/json",
