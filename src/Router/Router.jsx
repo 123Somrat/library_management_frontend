@@ -37,13 +37,13 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/bookdetails/${params.id}`),
+          fetch(`https://library-management-2lyp.onrender.com/bookdetails/${params.id}`),
       },
       {
         path: "/readbook/:id",
         element: <ReadingBook />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/readbook/${params.id}`),
+          fetch(`https://library-management-2lyp.onrender.com/readbook/${params.id}`),
       },
       {
         path: "/borrowedBook",

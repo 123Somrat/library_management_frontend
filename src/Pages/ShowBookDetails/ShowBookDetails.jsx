@@ -46,7 +46,7 @@ export default function ShowBookDetails() {
       userEmail: User.email,
     };
 
-    fetch("http://localhost:3000/books/borrowedbooks", {
+    fetch("https://library-management-2lyp.onrender.com/books/borrowedbooks", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,7 @@ export default function ShowBookDetails() {
             confirmButtonText: "ok",
           });
 
-          fetch(`http://localhost:3000/decrementbookquantity/${_id}`, {
+          fetch(`https://library-management-2lyp.onrender.com/decrementbookquantity/${_id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",

@@ -23,7 +23,7 @@ export default function BorrowedBook({ book, datas, setData }) {
       confirmButtonText: "Yes, return it!",
     }).then((res) => {
       if (res.isConfirmed) {
-        fetch(`http://localhost:3000/bookreturn/${id}`, {
+        fetch(`https://library-management-2lyp.onrender.com/bookreturn/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())
@@ -38,7 +38,7 @@ export default function BorrowedBook({ book, datas, setData }) {
 
             // fetch call for update the book quantity
 
-            fetch(`http://localhost:3000/incrementbookquantity/${_id}`, {
+            fetch(`https://library-management-2lyp.onrender.com/${_id}`, {
               method: "PATCH",
               headers: {
                 "content-type": "application/json",

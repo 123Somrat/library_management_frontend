@@ -75,7 +75,7 @@ export default function Register() {
           creationTime,
           lastSignInTime,
         };
-        fetch("http://localhost:3000/users", {
+        fetch("https://library-management-2lyp.onrender.com/users", {
           method: "post",
           headers: {
             "content-type": "application/json",
