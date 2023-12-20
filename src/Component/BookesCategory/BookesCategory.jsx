@@ -25,7 +25,7 @@ export default function BookesCategory() {
   // load all boks data when website load on first time
 
   useEffect(() => {
-    fetch(`http://localhost:3000/books/allbooks`)
+    fetch(`https://library-management-2lyp.onrender.com/books/allbooks`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
