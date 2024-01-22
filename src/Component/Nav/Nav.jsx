@@ -3,7 +3,7 @@ import logo from "../../assets/book-4986.svg";
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/Providers";
-
+import './Nav.css'
 export default function Nav() {
   //<IoBookSharp classNameName="w-8 h-8 text-amber-600"/>
   const { User, userSignOut } = useContext(AuthContext);
@@ -14,7 +14,7 @@ export default function Nav() {
   };
  // md:bg-red-100 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700
   return (
-    <div>
+    <div id='nav'>
       <nav className=" dark:bg-gray-900  w-full mx-auto z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
         <div className="max-w-screen-xl flex  flex-wrap items-center justify-between mx-auto p-4">
           <Link to={"/"} className="flex items-center">
