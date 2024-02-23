@@ -8,12 +8,10 @@ export default function BookesCategory() {
  // const [books, setBooks] = useState([]);
   const [searchedBook, setSearchedBook] = useState([]);
   const [searchButtonClicked, setSearchButtonClicked] = useState(false);
-  const books = useGetAllBooks()
+  const {loading , error , books } = useGetAllBooks()
 
 
-
-
-
+    console.log(books)
   const getAllBooks = (e) => {
     setSearchButtonClicked(false);
     const query = e?.target?.name;

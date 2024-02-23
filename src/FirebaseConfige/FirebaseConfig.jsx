@@ -4,7 +4,7 @@ import { getAuth} from "firebase/auth"
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
- console.log(import.meta.env.VITE_APIKEY)
+ 
 
 
 // Your web app's Firebase configuration
