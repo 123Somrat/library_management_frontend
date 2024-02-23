@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Books from "../Books/Books";
 import { Button, TextInput } from "flowbite-react";
+import useGetAllBooks from "../../Hooks/useGetAllBooks";
 export default function BookesCategory() {
-  const [books, setBooks] = useState([]);
+ // const [books, setBooks] = useState([]);
   const [searchedBook, setSearchedBook] = useState([]);
   const [searchButtonClicked, setSearchButtonClicked] = useState(false);
-
+  const books = useGetAllBooks()
 
 
 
@@ -23,13 +24,13 @@ export default function BookesCategory() {
       .then((data) => setBooks(data));
   };
   // load all boks data when website load on first time
-
+  /*
   useEffect(() => {
     fetch(`https://library-management-2lyp.onrender.com/books/allbooks`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
-
+*/
   // findBook based on serach if here only this booked are showing which books quantity more then 0 or available
 
   const findBook = (e) => {
