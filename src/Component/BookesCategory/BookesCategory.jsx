@@ -11,7 +11,7 @@ export default function BookesCategory() {
   const {loading , error , books } = useGetAllBooks()
 
 
-    console.log(books)
+    console.log(loading,error,books)
   const getAllBooks = (e) => {
     setSearchButtonClicked(false);
     const query = e?.target?.name;
@@ -41,6 +41,14 @@ export default function BookesCategory() {
       .then((res) => res.json())
       .then((data) => setSearchedBook(data));
   };
+   
+   if(loading.state){
+    console.log(loading.messege)
+     return <h1>{loading.messege}</h1>
+   }
+
+
+
 
   return (
     <div id='booksCategory'>

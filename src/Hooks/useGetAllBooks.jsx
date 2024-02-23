@@ -18,12 +18,14 @@ const useGetAllBooks = () => {
 
       fetch(`https://library-management-2lyp.onrender.com/books/allbooks`)
         .then((res) => {
-          if (!res.oke) {
+          if (!res.ok) {
             const errorMessege = `Fetching books failed ${res.status}`;
             throw new Error(errorMessege);
+          }else{
+
+            return res.json();
           }
 
-          return res.json();
         })
 
         .then((books) => setBooks(books));
