@@ -16,30 +16,30 @@ const useGetAllBooks = () => {
         messege: "Fetching all Books....",
       });
 
-      fetch(`https://library-management-2lyp.onrender.com/books/allbooks`)
-        .then((res) => {
-          if (!res.ok) {
-            const errorMessege = `Fetching books failed ${res.status}`;
-            throw new Error(errorMessege);
-          }else{
-
-            return res.json();
-          }
-
-        })
-
-        .then((books) => setBooks(books));
+      const fetchAllBooks = async () => {
+        const response = await fetch(
+          `https://library-management-2lyp.onrender.com/books/allbooks`
+        );
+        if (!response.ok) {
+          const errorMessege = `Fetching books failed ${res.status}`;
+          throw new Error(errorMessege);
+        } else {
+          const allBooks = await response.json();
+         
+          setBooks(allBooks);
+          setLoading({
+            ...loading,
+            state: false,
+            messege: "",
+          });
+        }
+      };
+      fetchAllBooks();
     } catch (err) {
       setError(err);
-    } finally {
-      setLoading({
-        ...loading,
-        state: false,
-        messege: "",
-      });
-    }
+    } 
+    
   }, []);
-
 
   return { loading, error, books };
 };

@@ -5,13 +5,13 @@ import Books from "../Books/Books";
 import { Button, TextInput } from "flowbite-react";
 import useGetAllBooks from "../../Hooks/useGetAllBooks";
 export default function BookesCategory() {
- // const [books, setBooks] = useState([]);
+// const [booksCategory, setBooksCategory] = useState([]);
   const [searchedBook, setSearchedBook] = useState([]);
   const [searchButtonClicked, setSearchButtonClicked] = useState(false);
   const {loading , error , books } = useGetAllBooks()
 
 
-    console.log(loading,error,books)
+   
   const getAllBooks = (e) => {
     setSearchButtonClicked(false);
     const query = e?.target?.name;
@@ -42,9 +42,11 @@ export default function BookesCategory() {
       .then((data) => setSearchedBook(data));
   };
    
+   console.log(loading.state)
+
+
    if(loading.state){
-    console.log(loading.messege)
-     return <h1>{loading.messege}</h1>
+     return <h1 className="text-center  w-[250px] d-block mx-auto p-8 bg-amber-600 text-white m-4 outline-none rounded-xl">{loading.messege}</h1>
    }
 
 
