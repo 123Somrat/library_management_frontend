@@ -10,7 +10,7 @@ export default function Home() {
       <section>
         <Banner />
       </section>
-      <section>
+      <section >
         <BookesCategory />
       </section>
       <section>

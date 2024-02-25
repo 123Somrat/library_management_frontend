@@ -1,7 +1,9 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
+import OwnSkeleton from "./OwnSkeleton";
 
-export default function Book({ book }) {
+export default function Book({ book, loading }) {
   // console.log(Object.keys(book).join(","))
 
   const {
@@ -14,6 +16,7 @@ export default function Book({ book }) {
     quantity,
     category,
   } = book;
+
   return (
     <div>
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[670px]">
@@ -22,7 +25,6 @@ export default function Book({ book }) {
           src={imageUrl}
           alt="product image"
         />
-
         <div className="px-5 pb-5">
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
             {bookName}

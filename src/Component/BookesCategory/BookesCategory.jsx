@@ -1,17 +1,17 @@
 //import programmingSvg from "../../assets/programming-web-code-black-out"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Books from "../Books/Books";
 import { Button, TextInput } from "flowbite-react";
 import useGetAllBooks from "../../Hooks/useGetAllBooks";
+import "react-loading-skeleton/dist/skeleton.css";
+import OwnSkeleton from "../Books/OwnSkeleton";
 export default function BookesCategory() {
-// const [booksCategory, setBooksCategory] = useState([]);
+  // const [booksCategory, setBooksCategory] = useState([]);
   const [searchedBook, setSearchedBook] = useState([]);
   const [searchButtonClicked, setSearchButtonClicked] = useState(false);
-  const {loading , error , books } = useGetAllBooks()
+  const { loading, error, books } = useGetAllBooks();
 
-
-   
   const getAllBooks = (e) => {
     setSearchButtonClicked(false);
     const query = e?.target?.name;
@@ -21,14 +21,7 @@ export default function BookesCategory() {
       .then((res) => res.json())
       .then((data) => setBooks(data));
   };
-  // load all boks data when website load on first time
-  /*
-  useEffect(() => {
-    fetch(`https://library-management-2lyp.onrender.com/books/allbooks`)
-      .then((res) => res.json())
-      .then((data) => setBooks(data));
-  }, []);
-*/
+
   // findBook based on serach if here only this booked are showing which books quantity more then 0 or available
 
   const findBook = (e) => {
@@ -41,19 +34,21 @@ export default function BookesCategory() {
       .then((res) => res.json())
       .then((data) => setSearchedBook(data));
   };
-   
-   console.log(loading.state)
 
+  if (loading.state) {
+    //  return <h1 className="text-center  w-[250px] d-block mx-auto p-8 bg-amber-600 text-white m-4 outline-none rounded-xl">{loading.messege}</h1>
 
-   if(loading.state){
-     return <h1 className="text-center  w-[250px] d-block mx-auto p-8 bg-amber-600 text-white m-4 outline-none rounded-xl">{loading.messege}</h1>
-   }
-
-
-
+    return (
+      <div className="grid justify-center md:mx-8 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+        {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+          <OwnSkeleton key={n} />
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div id='booksCategory'>
+    <div id="booksCategory">
       <div className="border-b  border-gray-200 dark:border-gray-700">
         <ul className="flex flex-wrap justify-center -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
           <li className="mr-2">
@@ -145,7 +140,7 @@ export default function BookesCategory() {
       {searchButtonClicked ? (
         <Books books={searchedBook} />
       ) : (
-        <Books books={books} />
+        <Books books={books} loading={loading} />
       )}
     </div>
   );

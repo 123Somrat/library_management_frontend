@@ -25,7 +25,7 @@ const useGetAllBooks = () => {
           throw new Error(errorMessege);
         } else {
           const allBooks = await response.json();
-         
+
           setBooks(allBooks);
           setLoading({
             ...loading,
@@ -37,8 +37,7 @@ const useGetAllBooks = () => {
       fetchAllBooks();
     } catch (err) {
       setError(err);
-    } 
-    
+    }
   }, []);
 
   return { loading, error, books };
