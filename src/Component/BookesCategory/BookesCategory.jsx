@@ -39,8 +39,8 @@ export default function BookesCategory() {
     //  return <h1 className="text-center  w-[250px] d-block mx-auto p-8 bg-amber-600 text-white m-4 outline-none rounded-xl">{loading.messege}</h1>
 
     return (
-      <div className="grid justify-center md:mx-8 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
-        {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+      <div className="grid mx-[80px] md:mx-8 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+         {[1, 2, 3, 4, 5, 6, 7].map((n) => (
           <OwnSkeleton key={n} />
         ))}
       </div>
