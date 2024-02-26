@@ -7,37 +7,15 @@ import useGetAllBooks from "../../Hooks/useGetAllBooks";
 import "react-loading-skeleton/dist/skeleton.css";
 import OwnSkeleton from "../Books/OwnSkeleton";
 export default function BookesCategory() {
-  // const [booksCategory, setBooksCategory] = useState([]);
-  const [searchedBook, setSearchedBook] = useState([]);
-  const [searchButtonClicked, setSearchButtonClicked] = useState(false);
-  const { loading, error, books , getAllBooks } = useGetAllBooks();
+  const { loading, error, books , getAllBooks ,findBook } = useGetAllBooks();
 
 
 
-  // findBook based on serach if here only this booked are showing which books quantity more then 0 or available
+  
 
-  const findBook = (e) => {
-    e.preventDefault();
+ 
 
-    setSearchButtonClicked(true);
-
-    // fetching available books
-    fetch(`https://library-management-2lyp.onrender.com/availablebooks`)
-      .then((res) => res.json())
-      .then((data) => setSearchedBook(data));
-  };
-
-  if (loading.state) {
-    //  return <h1 className="text-center  w-[250px] d-block mx-auto p-8 bg-amber-600 text-white m-4 outline-none rounded-xl">{loading.messege}</h1>
-
-    return (
-      <div className="grid mx-[80px] md:mx-8 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
-         {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-          <OwnSkeleton key={n} />
-        ))}
-      </div>
-    );
-  }
+  
 
   return (
     <div id="booksCategory">
@@ -134,11 +112,8 @@ export default function BookesCategory() {
          {[1, 2, 3, 4, 5, 6, 7].map((n) => (
           <OwnSkeleton key={n} />
         ))}
-      </div> : searchButtonClicked ? (
-        <Books books={searchedBook} />
-      ) : (
-        <Books books={books} loading={loading} />
-      )} 
+      </div> : <Books books={books} loading={loading} />
+      } 
     </div>
   );
 }
