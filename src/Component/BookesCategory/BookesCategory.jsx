@@ -10,17 +10,9 @@ export default function BookesCategory() {
   // const [booksCategory, setBooksCategory] = useState([]);
   const [searchedBook, setSearchedBook] = useState([]);
   const [searchButtonClicked, setSearchButtonClicked] = useState(false);
-  const { loading, error, books } = useGetAllBooks();
+  const { loading, error, books , getAllBooks } = useGetAllBooks();
 
-  const getAllBooks = (e) => {
-    setSearchButtonClicked(false);
-    const query = e?.target?.name;
 
-    // get all books
-    fetch(`https://library-management-2lyp.onrender.com/books/${query}`)
-      .then((res) => res.json())
-      .then((data) => setBooks(data));
-  };
 
   // findBook based on serach if here only this booked are showing which books quantity more then 0 or available
 

@@ -2,11 +2,25 @@ import { useEffect, useState } from "react";
 
 const useGetAllBooks = () => {
   const [books, setBooks] = useState([]);
+  const [bookCatagory,setBookCategory] = useState('allbooks')
   const [loading, setLoading] = useState({
     state: false,
     messege: "",
   });
   const [error, setError] = useState(null);
+
+
+
+
+  // fetching books depends on userinteraction
+  const getAllBooks = (e) => {
+   // setSearchButtonClicked(false);
+    const query = e?.target?.name;
+    setBookCategory(query)
+  
+  };
+
+
 
   useEffect(() => {
     try {
@@ -18,7 +32,7 @@ const useGetAllBooks = () => {
 
       const fetchAllBooks = async () => {
         const response = await fetch(
-          `https://library-management-2lyp.onrender.com/books/allbooks`
+          `https://library-management-2lyp.onrender.com/books/${bookCatagory}`
         );
         if (!response.ok) {
           const errorMessege = `Fetching books failed ${res.status}`;
@@ -38,9 +52,9 @@ const useGetAllBooks = () => {
     } catch (err) {
       setError(err);
     }
-  }, []);
+  }, [bookCatagory]);
 
-  return { loading, error, books };
+  return { loading, error, books , getAllBooks };
 };
 
 export default useGetAllBooks;
