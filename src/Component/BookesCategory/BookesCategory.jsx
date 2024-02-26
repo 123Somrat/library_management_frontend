@@ -129,11 +129,16 @@ export default function BookesCategory() {
           </form>
         </ul>
       </div>
-      {searchButtonClicked ? (
+
+     { loading.state ?   <div className="grid mx-[80px] md:mx-8 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+         {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+          <OwnSkeleton key={n} />
+        ))}
+      </div> : searchButtonClicked ? (
         <Books books={searchedBook} />
       ) : (
         <Books books={books} loading={loading} />
-      )}
+      )} 
     </div>
   );
 }
