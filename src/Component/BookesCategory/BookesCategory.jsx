@@ -7,16 +7,12 @@ import useGetAllBooks from "../../Hooks/useGetAllBooks";
 import "react-loading-skeleton/dist/skeleton.css";
 import OwnSkeleton from "../Books/OwnSkeleton";
 export default function BookesCategory() {
+
+
   const { loading, error, books , getAllBooks ,findBook } = useGetAllBooks();
 
 
-
-  
-
- 
-
-  
-
+   
   return (
     <div id="booksCategory">
       <div className="border-b  border-gray-200 dark:border-gray-700">
